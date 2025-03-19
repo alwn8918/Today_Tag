@@ -25,9 +25,25 @@ a:hover {
 body {
 	margin: 0;
 	display: flex;
-	place-items: center;
-	min-width: 320px;
+	justify-content: center;
 	min-height: 100vh;
+	background-color: #f2f2f2;
+}
+
+#root {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	max-width: 480px;
+	background-color: white;
+	min-height: 100vh;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 480px) {
+	#root {
+		width: 100vw;
+	}
 }
 
 h1 {
