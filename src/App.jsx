@@ -4,13 +4,15 @@ import "./index.css";
 import Home from "./pages/Home";
 
 function App() {
-	return (
-		<BrowserRouter>
-			<Routes>
-				<Route path="/" element={<Home />} />
-			</Routes>
-		</BrowserRouter>
-	);
+  const selectedType = "yuja";
+
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home type={selectedType} />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;
