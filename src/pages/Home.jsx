@@ -9,7 +9,6 @@ function Home({ type }) {
   return (
     <H.Container>
       <H.Background src={assets.background} alt={`${type} background`} />
-      <H.Garland src={assets.garland} alt={`${type} garland`} />
       <H.Bubble>
         <Bubble />
       </H.Bubble>
