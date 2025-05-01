@@ -42,6 +42,8 @@ export const WeatherContainer = styled.div`
 export const Date = styled.p`
   position: absolute;
   top: 40px;
+  left: 0;
+  right: 0;
   font-size: 20px;
   font-weight: 700;
   letter-spacing: 1px;
@@ -52,6 +54,8 @@ export const Date = styled.p`
 export const SubComment = styled.p`
   position: absolute;
   top: 253px;
+  left: 0;
+  right: 0;
   font-family: "Hakgyoansim Chilpanjiugae TTF";
   font-size: 15px;
   font-weight: 600;
@@ -62,6 +66,8 @@ export const SubComment = styled.p`
 export const MainComment = styled.p`
   position: absolute;
   top: 279px;
+  left: 0;
+  right: 0;
   font-family: "Hakgyoansim Chilpanjiugae TTF";
   font-size: 24px;
   font-weight: 600;
