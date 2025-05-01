@@ -4,11 +4,16 @@ import bubble from "/public/assets/bubble.png";
 import Weather from "./Weather";
 
 function Bubble() {
+  const today = new Date();
+  const formattedDate = `${today.getFullYear()}년 ${
+    today.getMonth() + 1
+  }월 ${today.getDate()}일`;
+
   return (
     <B.Container>
       <B.BubbleContainer>
         <B.Bubble src={bubble} alt={"bubble"} />
-        <B.Date>2024년 3월 20일</B.Date>
+        <B.Date>{formattedDate}</B.Date>
         <B.WeatherContainer>
           <Weather />
         </B.WeatherContainer>

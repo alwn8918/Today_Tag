@@ -48,6 +48,11 @@ export const Location = styled.p`
   line-height: normal;
 `;
 
+export const WeatherImg = styled.img`
+  width: 24.18px;
+  height: 24.18px;
+`;
+
 export const Temperature = styled.p`
   font-size: 32px;
   font-weight: 600;
