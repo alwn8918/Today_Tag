@@ -1,5 +1,15 @@
 import { styled } from "styled-components";
 
+export const Message = styled.div`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Paperlogy;
+  color: var(--black, #363131);
+`;
+
 export const Container = styled.div`
   width: 100%;
   display: flex;

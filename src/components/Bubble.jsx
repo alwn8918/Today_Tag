@@ -22,16 +22,11 @@ function Bubble() {
   }월 ${today.getDate()}일`;
   const nowHour = today.getHours();
 
-  const [weatherInfo, setWeatherInfo] = useState({
-    weatherType: "sunny",
-    time: "morning",
-  });
+  const [weatherInfo, setWeatherInfo] = useState(null);
 
-  const subComment = getRandomComment(
-    weatherInfo.weatherType,
-    weatherInfo.time
-  );
-
+  const subComment = weatherInfo
+    ? getRandomComment(weatherInfo.weatherType, weatherInfo.time)
+    : "";
   const mainComment = getMainCommentByTime(nowHour);
 
   return (
@@ -39,11 +34,19 @@ function Bubble() {
       <B.BubbleContainer>
         <B.Bubble src={bubble} alt={"bubble"} />
         <B.Date>{formattedDate}</B.Date>
+
         <B.WeatherContainer>
           <Weather onWeatherChange={setWeatherInfo} />
         </B.WeatherContainer>
-        <B.SubComment>{subComment}</B.SubComment>
-        <B.MainComment>{mainComment}</B.MainComment>
+
+        {weatherInfo ? (
+          <>
+            <B.SubComment>{subComment}</B.SubComment>
+            <B.MainComment>{mainComment}</B.MainComment>
+          </>
+        ) : (
+          <B.SubComment>날씨를 불러오는 중이에요!</B.SubComment>
+        )}
       </B.BubbleContainer>
     </B.Container>
   );

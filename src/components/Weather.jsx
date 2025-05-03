@@ -76,8 +76,8 @@ function Weather({ onWeatherChange }) {
     }
   }, []);
 
-  if (error) return <div>{error}</div>;
-  if (!weatherData) return <div>날씨 불러오는 중...</div>;
+  if (error) return <W.Message>{error}</W.Message>;
+  if (!weatherData) return <W.Message>날씨를 불러오는 중이에요!</W.Message>;
 
   const current = weatherData.current;
   const forecast = weatherData.forecast.forecastday[0].day;
