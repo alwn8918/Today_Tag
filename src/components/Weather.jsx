@@ -4,9 +4,9 @@ import weatherBackgrounds from "../constants/weatherBackgrounds";
 import rainIcon from "../../public/assets/icon/droplet.svg";
 
 const getWeatherKey = (text, hour) => {
-  const isMorning = hour >= 6 && hour < 12;
-  const isAfternoon = hour >= 12 && hour < 18;
-  const isNight = hour >= 18 || hour < 6;
+  const isMorning = hour >= 5 && hour < 11;
+  const isAfternoon = hour >= 11 && hour < 18;
+  const isNight = hour >= 18 || hour < 5;
 
   const lowerText = text.toLowerCase();
 
@@ -21,7 +21,7 @@ const getWeatherKey = (text, hour) => {
   return "cloudy";
 };
 
-function Weather() {
+function Weather({ onWeatherChange }) {
   const [weatherData, setWeatherData] = useState(null);
   const [error, setError] = useState(null);
 
@@ -35,6 +35,24 @@ function Weather() {
         const data = await res.json();
         if (data.error) throw new Error(data.error.message);
         setWeatherData(data);
+
+        const weatherText = data.current.condition.text;
+        const hour = new Date().getHours();
+        const weatherKey = getWeatherKey(weatherText, hour);
+
+        // 날씨 정보 전달
+        if (onWeatherChange) {
+          let weatherType = "sunny";
+          if (weatherKey.includes("cloudy")) weatherType = "cloudy";
+          else if (weatherKey.includes("rainy")) weatherType = "rainy";
+          else if (weatherKey.includes("snowy")) weatherType = "snowy";
+
+          let time = "morning";
+          if (hour >= 12 && hour < 18) time = "afternoon";
+          else if (hour >= 18 || hour < 6) time = "evening";
+
+          onWeatherChange({ weatherType, time });
+        }
       } catch (err) {
         console.error("❌ 날씨 불러오기 실패:", err);
         setError("날씨 정보를 가져오지 못했어요 😢");
