@@ -1,11 +1,40 @@
 import React, { useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
 import "./index.css";
 import Home from "./pages/Home";
+import Select from "./pages/Select";
+
+function RouterWrapper() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    // 루트(/)로 들어온 경우 → localStorage 확인해서 자동 이동
+    if (location.pathname === "/") {
+      const savedType = localStorage.getItem("selectedCharacter");
+      if (savedType === "yuja" || savedType === "top") {
+        navigate(`/${savedType}`);
+      }
+    }
+  }, [location]);
+
+  return (
+    <Routes>
+      <Route path="/select" element={<Select />} />
+      <Route path="/yuja" element={<Home type="yuja" />} />
+      <Route path="/top" element={<Home type="top" />} />
+      <Route path="/" element={<Select />} /> {/* fallback */}
+    </Routes>
+  );
+}
 
 function App() {
-  const selectedType = "yuja";
-
   useEffect(() => {
     const setAppHeight = () => {
       const doc = document.documentElement;
@@ -18,9 +47,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home type={selectedType} />} />
-      </Routes>
+      <RouterWrapper />
     </BrowserRouter>
   );
 }
