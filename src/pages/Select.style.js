@@ -52,9 +52,19 @@ export const SubTitle = styled.h2`
 
 export const CharacterContainer = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   z-index: 1;
+  margin-top: 220px;
+`;
+
+export const Row = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 20px;
 `;
 
 export const Character = styled.div`

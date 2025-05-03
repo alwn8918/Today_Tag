@@ -18,7 +18,11 @@ function RouterWrapper() {
     // 루트(/)로 들어온 경우 → localStorage 확인해서 자동 이동
     if (location.pathname === "/") {
       const savedType = localStorage.getItem("selectedCharacter");
-      if (savedType === "yuja" || savedType === "top") {
+      if (
+        savedType === "yuja" ||
+        savedType === "top" ||
+        savedType === "miggo"
+      ) {
         navigate(`/${savedType}`);
       }
     }
@@ -29,6 +33,7 @@ function RouterWrapper() {
       <Route path="/select" element={<Select />} />
       <Route path="/yuja" element={<Home type="yuja" />} />
       <Route path="/top" element={<Home type="top" />} />
+      <Route path="/miggo" element={<Home type="miggo" />} />
       <Route path="/" element={<Select />} /> {/* fallback */}
     </Routes>
   );

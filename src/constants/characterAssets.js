@@ -9,6 +9,10 @@ const characterAssets = {
     garland: "assets/top/top_garland.png",
     background: "assets/top/top_background.png",
   },
+  miggo: {
+    character: "assets/miggo/miggo.png",
+    background: "assets/miggo/miggo_background.png",
+  },
 };
 
 export default characterAssets;
